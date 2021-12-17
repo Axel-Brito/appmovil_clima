@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 class IntegrantesPage extends StatelessWidget {
   final estilotexto = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold);
   final estilotexto1 = TextStyle(fontSize: 15.0, color: Colors.white70);
-  final String infoText1 = "Cree en ti mismo para que\n"
-      "la vida te de sorpresas.\n";
-  final String infoText2 = "Con el tiempo aprendí que la experiencia\n"
-      "es lo que más importa en la vida\n"
-      "por eso me centro en cada día aprender.\n";
-  final String infoText3 = "22 años, feliz, en busca de sus sueños\n"
-      "La vida te da sorpresas.\n";
+  final String infoText1 = "Axel Brito González\n"
+      "axel.britog@utem.cl\n";
+  final String infoText2 = "Cristobal González Garate\n"
+      "cristobal.gonzalezg@gmail.com\n";
+  final String infoText3 = "Francisco Díaz Hernandez\n"
+      "francisco.diazh@gmail.com\n";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
