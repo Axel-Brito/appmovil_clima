@@ -9,13 +9,36 @@ class EstacionPage extends StatefulWidget {
 }
 
 class _EstacionPageState extends State<EstacionPage> {
-  final items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+  //Lista de estaciones
+  final items = [
+    'Arica',
+    'Iquique',
+    'Antofagasta',
+    'Copiapó',
+    'La Serena',
+    'Valparaíso',
+    'Rancagua',
+    'Talca',
+    'Chillán',
+    'Concepción',
+    'Temuco',
+    'Valdivia',
+    'Puerto Montt',
+    'Coyhaique',
+    'Punta Arenas',
+    'Santiago',
+  ];
+  //value
   String? value;
-  double x = 0.0, y = 0.0;
+
+  //definicion de latitudes y longitudes inicales
+  double x = -33.45694, y = -70.64827;
+  final LatLng fromPoint = LatLng(-33.45694, -70.64827);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        //Stack de widgets
         children: <Widget>[
           _estilofondo(),
           Center(
@@ -23,7 +46,7 @@ class _EstacionPageState extends State<EstacionPage> {
               children: [
                 _estilotitulos(),
                 _botoncambio(x, y),
-                _map(x, y, value),
+                _map(fromPoint, value),
                 SizedBox(
                   height: 20.0,
                 ),
@@ -46,41 +69,77 @@ class _EstacionPageState extends State<EstacionPage> {
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(color: Colors.black, width: 4)),
         child: DropdownButtonHideUnderline(
+          //Boton desplegable que muestra las estaciones por nombre
           child: DropdownButton<String>(
             value: value,
             items: items.map(buildMenuItem).toList(),
             onChanged: (value) => setState(() {
               this.value = value;
-              if (value == 'Item 1') {
+              //Cambio de valor de latitud y longitud
+              if (value == 'Arica') {
+                x = -18.4746;
+                y = -70.29792;
+              } else if (value == 'Iquique') {
+                x = -20.21326;
+                y = -70.15027;
+              } else if (value == 'Antofagasta') {
+                x = -23.65236;
+                y = -70.3954;
+              } else if (value == 'Copiapó') {
+                x = -27.36679;
+                y = -70.3314;
+              } else if (value == 'La Serena') {
+                x = -29.90453;
+                y = -71.24894;
+              } else if (value == 'Valparaíso') {
+                x = 33.036;
+                y = -71.62963;
+              } else if (value == 'Rancagua') {
+                x = -34.17083;
+                y = -70.74444;
+              } else if (value == 'Talca') {
+                x = -35.4264;
+                y = -71.65542;
+              } else if (value == 'Chillán') {
+                x = -36.60664;
+                y = -72.10344;
+              } else if (value == 'Concepción') {
+                x = -36.82699;
+                y = -73.04977;
+              } else if (value == 'Temuco') {
+                x = -38.73965;
+                y = -72.59842;
+              } else if (value == 'Valdivia') {
+                x = -39.81422;
+                y = -73.24589;
+              } else if (value == 'Puerto Montt') {
+                x = -41.4693;
+                y = -72.94237;
+              } else if (value == 'Coyhaique') {
+                x = -45.57524;
+                y = -72.06619;
+              } else if (value == 'Punta Arenas') {
+                x = -53.15483;
+                y = -70.91129;
+              } else if (value == 'Santiago') {
                 x = -33.45694;
                 y = -70.64827;
-                _map(x, y, value);
-              } else if (value == 'Item 2') {
-                x = 52.52437;
-                y = 13.41053;
-                _map(x, y, value);
-              } else if (value == 'Item 3') {
-                x = 52.52437;
-                y = 13.41053;
-                _map(x, y, value);
-              } else if (value == 'Item 4') {
-                x = 52.52437;
-                y = 13.41053;
-                _map(x, y, value);
               }
             }),
           ),
         ));
   }
 
+  //Despliegue de Menú deplegable
   DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
       value: item,
       child: Text(item,
-          style: TextStyle(
+          style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20.0,
               color: Colors.black)));
 
+  //Estilo del fondo
   Widget _estilofondo() {
     final fondo = Container(
       width: double.infinity,
@@ -99,6 +158,7 @@ class _EstacionPageState extends State<EstacionPage> {
     );
   }
 
+  //Estilo de titulos
   Widget _estilotitulos() {
     return SafeArea(
       child: Container(
@@ -118,6 +178,7 @@ class _EstacionPageState extends State<EstacionPage> {
     );
   }
 
+  //Creación de boton para salir
   Widget _botonback(context) {
     return TextButton(
         onPressed: () {
@@ -147,17 +208,27 @@ class _EstacionPageState extends State<EstacionPage> {
         )));
   }
 
-  Widget _map(double x, double y, String? value) {
+  //Widget de mapa de google
+  Widget _map(fromPoint, String? value) {
     return Container(
       height: 300.0,
       child: GoogleMap(
         mapType: MapType.normal,
         myLocationEnabled: true,
+        myLocationButtonEnabled: true,
         initialCameraPosition: CameraPosition(
           target: LatLng(x, y),
-          zoom: 5.0,
+          zoom: 10.0,
         ),
+        markers: _createMarkers(),
       ),
     );
+  }
+
+  //Creación de pin de ubicación
+  Set<Marker> _createMarkers() {
+    var tmp = Set<Marker>();
+    tmp.add(Marker(markerId: MarkerId('fromPoint'), position: fromPoint));
+    return tmp;
   }
 }

@@ -24,6 +24,7 @@ class second extends StatefulWidget {
       );
 }
 
+//Clase del menú principal
 class PrincipalState extends State<second> {
   String url;
   String name;
@@ -34,9 +35,11 @@ class PrincipalState extends State<second> {
     required this.email,
   });
 
-  final route1 = MaterialPageRoute(builder: (context) => IntegrantesPage());
+  //Variable que almacena el login
   GoogleSignIn _googleSignIn = GoogleSignIn();
   @override
+
+  //Vista principal del menú
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -46,10 +49,10 @@ class PrincipalState extends State<second> {
             child: Column(
               children: <Widget>[
                 _estilotitulos(),
-                SizedBox(
+                const SizedBox(
                   height: 50.0,
                 ),
-                _estilobotones(context)
+                _creadordebotones(context)
               ],
             ),
           ),
@@ -59,6 +62,7 @@ class PrincipalState extends State<second> {
     );
   }
 
+  //Estilo del fondo
   Widget _estilofondo() {
     return Container(
       width: double.infinity,
@@ -74,6 +78,7 @@ class PrincipalState extends State<second> {
     );
   }
 
+  //Estilo de titulos
   Widget _estilotitulos() {
     return SafeArea(
       child: Container(
@@ -93,17 +98,20 @@ class PrincipalState extends State<second> {
     );
   }
 
-  Widget _estilobotones(BuildContext context) {
+  //Widget que crea los botones
+  Widget _creadordebotones(BuildContext context) {
     return Center(
       child: Container(
         child: Column(
           children: <Widget>[
-            _crearboton(context, Colors.blue, Icons.border_all, 'Estación',
+            //Creación de boton que lleva a Estación
+            _estilobotones(context, Colors.blue, Icons.border_all, 'Estación',
                 '/Estacion'),
-            SizedBox(
+            const SizedBox(
               height: 40.0,
             ),
-            _crearboton(context, Colors.black, Icons.people_outline_rounded,
+            //Creación de boton que lleva a Integrantes
+            _estilobotones(context, Colors.black, Icons.people_outline_rounded,
                 'Integrantes', '/Integrantes'),
           ],
         ),
@@ -111,8 +119,8 @@ class PrincipalState extends State<second> {
     );
   }
 
-//_crearboton(Colors.blue, Icons.border_all, 'General'),
-  Widget _crearboton(
+  //Widget que define el estilo de los botones
+  Widget _estilobotones(
       context, Color color, IconData icono, String texto, String ruta) {
     return TextButton(
       child: ClipRect(
@@ -147,11 +155,15 @@ class PrincipalState extends State<second> {
         shadowColor: MaterialStateProperty.all(Colors.transparent),
       ),
       onPressed: () {
-        Navigator.pushNamed(context, ruta);
+        Navigator.pushNamed(
+          context,
+          ruta,
+        );
       },
     );
   }
 
+  //Widget que define boton de desconexión
   Widget _botonlogout(context) {
     return SafeArea(
       child: TextButton(
@@ -159,7 +171,7 @@ class PrincipalState extends State<second> {
           Container(
               height: 40.0,
               width: 40.0,
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Icon(
                   Icons.keyboard_backspace_sharp,
@@ -168,10 +180,10 @@ class PrincipalState extends State<second> {
               )),
           Text('Logout'),
         ]),
+        //Al presionar se deslogea y envia a Homepage que es la pagina de login
         onPressed: () {
           _googleSignIn.signOut().then((value) {
             setState() {}
-            ;
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(

@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 class IntegrantesPage extends StatelessWidget {
   final estilotexto = TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold);
   final estilotexto1 = TextStyle(fontSize: 15.0, color: Colors.white70);
-  final String infoText1 = "Axel Brito González\n"
-      "axel.britog@utem.cl\n";
-  final String infoText2 = "Cristobal González Garate\n"
-      "cristobal.gonzalezg@gmail.com\n";
-  final String infoText3 = "Francisco Díaz Hernandez\n"
-      "francisco.diazh@gmail.com\n";
+  final String infoText1 = "axel.britog@utem.cl\n";
+  final String infoText2 = "cristobal.gonzalezg@gmail.com\n";
+  final String infoText3 = "francisco.diazh@gmail.com\n";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,16 +18,19 @@ class IntegrantesPage extends StatelessWidget {
                   image: NetworkImage(
                       'https://lamenteesmaravillosa.com/wp-content/uploads/2017/11/grupo-de-personas-con-un-puzzle-600x300.jpg')),
               _estilotitulo(),
+              //Creacion de primer integrante
               _estilotexto(
                   'assets/integrante3.png', 'Axel Brito González', infoText1),
+              //Creacion de segundo integrante
               _estilotexto(
                   'assets/integrante1.jpeg', 'Cristobal González', infoText2),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
+              //Creacion de tercer integrante
               _estilotexto(
                   'assets/integrante2.jpeg', 'Francisco Diaz', infoText3),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               _botonback(context),
@@ -41,6 +41,7 @@ class IntegrantesPage extends StatelessWidget {
     );
   }
 
+  //Estilo del fondo
   Widget _estilofondo() {
     final fondo = Container(
       width: double.infinity,
@@ -59,6 +60,7 @@ class IntegrantesPage extends StatelessWidget {
     );
   }
 
+  //Definicion de estilo de titulo
   Widget _estilotitulo() {
     return SafeArea(
       child: Container(
@@ -80,10 +82,11 @@ class IntegrantesPage extends StatelessWidget {
     );
   }
 
+  //Definicion de estilo de texto
   Widget _estilotexto(String routeimage, String nombre, String info) {
     return Row(
       children: <Widget>[
-        SizedBox(
+        const SizedBox(
           width: 10.0,
         ),
         ClipRRect(
@@ -93,7 +96,7 @@ class IntegrantesPage extends StatelessWidget {
               height: 100.0,
               width: 100.0,
             )),
-        SizedBox(
+        const SizedBox(
           width: 10.0,
         ),
         Column(
@@ -111,6 +114,7 @@ class IntegrantesPage extends StatelessWidget {
     );
   }
 
+  //Creacion de boton para volver a pagina principal
   Widget _botonback(context) {
     return TextButton(
         onPressed: () {

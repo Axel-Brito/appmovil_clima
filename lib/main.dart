@@ -3,7 +3,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:appmovil/src/pages/estacion_page.dart';
-import 'package:appmovil/src/pages/estimacion_page.dart';
 import 'package:appmovil/src/pages/integrantes_page.dart';
 import 'package:appmovil/src/pages/home_page.dart';
 import 'package:appmovil/src/pages/login_page1.dart';
@@ -15,7 +14,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  // Widget que inicia la aplicación.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,11 +24,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
+      //Rutas globales
       initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
         '/Estacion': (context) => EstacionPage(),
-        '/Estimacion': (context) => EstimacionPage(),
         '/Integrantes': (context) => IntegrantesPage(),
       },
       //home: HomePage()
@@ -42,6 +41,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+//Clase que redirecciona al login de google
 class _HomePageState extends State<HomePage> {
   bool _isLoggedIn = false;
   GoogleSignInAccount? _userObj;

@@ -17,14 +17,16 @@ class _firstpageState extends State<firstpage> {
   String email = '';
   @override
   Widget build(BuildContext context) {
+    //Widget principal pagina login
     return Scaffold(
+        //Creación de AppBar
         appBar: AppBar(
           backgroundColor: Colors.purple,
           centerTitle: true,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'App',
                 style: TextStyle(
                   color: Colors.white,
@@ -39,13 +41,17 @@ class _firstpageState extends State<firstpage> {
             ],
           ),
         ),
+
+        //Cuerpo de login
         body: Stack(children: [
+          //llamado a funcion _estilofondo
           _estilofondo(),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                ClipRRect(
+                //Imagen de login
+                const ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30.0),
                       topRight: Radius.circular(30.0),
@@ -58,9 +64,10 @@ class _firstpageState extends State<firstpage> {
                       isAntiAlias: true,
                       fit: BoxFit.fill,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 50.0,
                 ),
+                //Boton importado de auth_botons, apariencia estandar de login con Google
                 GoogleAuthButton(
                   text: 'Ingresar con Google',
                   onPressed: () {
@@ -71,6 +78,7 @@ class _firstpageState extends State<firstpage> {
                         name = _userObj!.displayName.toString();
                         email = _userObj!.email;
                       });
+                      //Navigator hacia el menú, recibe context y envia a second datos de google
                       if (userData != null) {
                         Navigator.pushReplacement(
                           context,
@@ -92,6 +100,7 @@ class _firstpageState extends State<firstpage> {
         ]));
   }
 
+  //Widget que define el fondo
   Widget _estilofondo() {
     return Container(
       width: double.infinity,
