@@ -3,6 +3,14 @@
 # AppMovil_clima
 Implementación de un AppMovil en flutter, en donde se despliega informacion climatica sobre lugares.
 
+## Antes de comenzar
+
+Existe una carpeta llamada KEYS, debemos entrar y copiar los archivos que se encuentran en ella, luego nos dirijimos a:
+
+```C:\Users\Nombre\.android```
+
+Y aqui pegamos los archivos.
+
 ## Clonar repositorio
 En primera instancia, se debe clonar el respositorio mediante el uso de GIT. Debe ingresar el siguiente comando por terminarl:
 
