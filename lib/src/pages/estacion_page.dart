@@ -32,7 +32,7 @@ class _EstacionPageState extends State<EstacionPage> {
   String? value;
 
   //definicion de latitudes y longitudes inicales
-  double x = -33.45694, y = -70.64827;
+  var x = -33.45694, y = -70.64827;
   final LatLng fromPoint = LatLng(-33.45694, -70.64827);
   @override
   Widget build(BuildContext context) {
